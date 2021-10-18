@@ -56,8 +56,8 @@ public class InzeratyController {
     }
 
     @GetMapping("/inzeraty/edit/{id}")
-    public String upravInzerat(@PathVariable Long id, @RequestParam(value = "heslo", required = false) String heslos, Model model) {
-        if (heslos == ulozisteInzeratu.getById(id.intValue()).getHesloProUpravu()) {     // Tato podmínka prostě nefunguje, pro testovací účely měněno na TRUE
+    public String upravInzerat(@PathVariable Long id, @RequestParam(value = "heslo", required = false) String heslo, Model model) {
+        if (heslo.equals(ulozisteInzeratu.getById(id.intValue()).getHesloProUpravu())) {
             model.addAttribute("inzerat", ulozisteInzeratu.getById(id.intValue()));
             return "uprav_inzerat";
         }
