@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Inzeráty</title>
+</head>
+<body>
+<h1>Úprava inzerátu</h1>
+<form th:action="@{/inzeraty/{id} (id=${inzerat.id})}" th:object="${inzerat}" method="POST">
+
+    <label for="text">Text inzerátu</label>
+    <input id="text" type="text" name="text" th:field="*{text}"/>
+
+    <label for="cena">Cena inzerátu</label>
+    <input id="cena" type="number" name="cena" th:field="*{cena}"/>
+
+    <label for="kategorie">Kategorie inzerátu</label>
+    <select id="kategorie" required th:field="*{kategorie}">
+        <option
+                th:each="kategorie : ${T(cz.uhk.ppro.inzeraty.model.Kategorie).values()}"
+                th:text="${kategorie}"
+                th:value="${kategorie}">
+        </option>
+    </select>
+    <br>
+    <button type="submit" value="zmenit" name="zmenit">Změnit</button>
+    <button type="submit" value="smaz" name="smaz">Smaž</button>
+</form>
+</body>
+</html>

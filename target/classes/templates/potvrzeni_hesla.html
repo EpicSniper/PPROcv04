@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Inzeráty</title>
+</head>
+<body>
+<h1>Potvrďte heslo</h1>
+<form method="GET" th:action="@{/inzeraty/edit/{id}(id=${inzerat.id})}" th:object="${inzerat}">
+    <label for="heslo" th:text="'Heslo inzerátu (' + *{hesloProUpravu} + ')'"></label>
+    <input id="heslo" type="text" name="text" th:name="heslo"/>
+    <button type="submit">Potvrzuji</button>
+</form>
+</body>
+</html>

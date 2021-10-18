@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Inzeráty</title>
+</head>
+<body>
+<h1>Vytvořit nový inzerát</h1>
+<form th:action="@{/heslo}" th:object="${inzerat}" method="POST">
+    <label for="text"> Inzerat Text </label>
+    <input id="text" type="text"  name="text" th:field="*{text}"/>
+    <label for="cena"> Inzerat Cena </label>
+    <input id="cena" type="number" name="cena" th:field="*{cena}"/>
+
+    <label for="kategorie">Inzerat Kategorie</label>
+    <select id="kategorie" required th:field="*{kategorie}">
+        <option
+                th:each="kategorie : ${T(cz.uhk.ppro.inzeraty.model.Kategorie).values()}"
+                th:text="${kategorie}"
+                th:value="${kategorie}">
+        </option>
+    </select>
+    <br>
+    <button type="submit">Vytvořit inzerát</button>
+</form>
+</body>
+</html>

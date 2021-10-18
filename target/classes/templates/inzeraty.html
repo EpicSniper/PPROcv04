@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Inzeráty</title>
+</head>
+<body>
+<h1>List inzerátu</h1>
+
+<a th:href="@{/inzeraty/new}">Přidej inzerát</a>
+<a th:href="@{/inzeraty/}">Všechny kategorie</a>
+<a th:href="@{/inzeraty/(kategorie=VYMENA)}">Kategorie výměna</a>
+<a th:href="@{/inzeraty/(kategorie=PRODEJ)}">Kategorie prodej</a>
+<a th:href="@{/inzeraty/(kategorie=NAKUP)}">Kategorie nákup</a>
+<table>
+    <thead>
+    <tr>
+        <th>Kategorie inzerátu</th>
+        <th>Text inzerátu</th>
+        <th>Cena inzerátu</th>
+        <th>Datum vložení inzerátu</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="inzerat: ${inzeraty}">
+        <td th:text="${inzerat.kategorie}"></td>
+        <td th:text="${inzerat.text}"></td>
+        <td th:text="${inzerat.cena}"></td>
+        <td th:text="${inzerat.datum}"></td>
+        <td>
+            <a th:href="@{/inzeraty/potvrzeni/{id}(id=${inzerat.id})}">Upravit</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
